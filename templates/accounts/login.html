@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'loginstyle.css' %}">
+    <title>Login Page</title>
+</head>
+<body>
+    <div class="loginbox">
+        <img src="{% static 'profile_icon.jpg' %}" class="user">
+        <h1>Login Here</h1>
+        <form action="{% url 'accounts:login' %}" method="POST">
+            <p>E-mail</p>
+           <input type="text" name="email" placeholder="Enter Email" required id="id_email">
+            <p>Password</p>
+            <input type="password" name="password" placeholder="Enter Password" required id="id_password">
+
+            {% csrf_token %}
+        
+            <input type="submit" name="" value="Login">
+            <a href="/">Back to Home</a><br>
+           
+        </form>
+
+        
+    </div>
+    
+</body>
+</html>
+
+
+

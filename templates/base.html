@@ -1,0 +1,185 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <title>E-Hospital</title>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        <a href="#">News</a>
+
+
+
+        {% if request.user.is_authenticated and request.user.role == 'hospital' %}
+        <div class="dropdown">
+            <button class="dropbtn">
+                {% if request.user.role == 'hospital' %}
+                {{ request.user.first_name }} {{ request.user.last_name }}
+                {% else %}
+                {{ request.user.first_name }}
+                {% endif %}
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="{% url 'hospital:hospital-dashboard' %}">Dashboard</a>
+                <a href="{% url 'accounts:logout' %}">Logout</a>
+            </div>
+        </div>
+        {% elif request.user.is_authenticated and request.user.role == 'bloodbank' %}
+        <div class="dropdown"> <button class="dropbtn">
+                {% if request.user.role == 'bloodbank' %}
+                {{ request.user.first_name }} {{ request.user.last_name }}
+                {% else %}
+                {{ request.user.first_name }}
+                {% endif %}
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="{% url 'bloodbank:bloodbank-dashboard' %}">Dashboard</a>
+                <a href="{% url 'accounts:logout' %}">Logout</a>
+            </div>
+        </div>
+        {% elif request.user.is_authenticated and request.user.role == 'supplier' %}
+        <div class="dropdown">
+            <button class="dropbtn">
+                {% if request.user.role == 'supplier' %}
+                {{ request.user.first_name }} {{ request.user.last_name }}
+                {% else %}
+                {{ request.user.first_name }}
+                {% endif %}
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="{% url 'supplier:supplier-dashboard' %}" class="dropdown-item">Edit Profile</a>
+                <a href="{% url 'accounts:logout' %}" class="dropdown-item">Logout</a>
+            </div>
+        </div>
+        {% else %}
+        <a href="{% url 'accounts:login' %}">Login</a>
+        <div class="dropdown">
+            <button class="dropbtn">Register
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="{% url 'accounts:hospital-register' %}">Hospital</a>
+                <a href="{% url 'accounts:bloodbank-register' %}">Blood Bank</a>
+                <a href="{% url 'accounts:supplier-register' %}">Suppliers</a>
+            </div>
+        </div>
+        {% endif %}
+
+
+    </div>
+
+
+    <div class="s-wrap">
+        <div class="s-move">
+            <div class="slide">
+                <q>
+                    The pandemic reinforces what we already know. We can’t keep people healthy if they don’t have a roof
+                    over their head and food on the table.
+                </q>
+                <h3>~ Bechara Choucair, M.D., Kaiser Permanente’s senior vice president and chief health officer</h3>
+
+            </div>
+            <div class="slide">
+                <q>
+                    COVID is a funhouse mirror that is amplifying issues that have existed forever. People are not dying
+                    of COVID. They are dying of racism, of economic inequality and it is not going to stop with COVID.
+                </q>
+                <h3>~ Shreya Kangovi, M.D., M.S.H.P., associate professor of medicine at the Perelman School of Medicine
+                    at the University of Pennsylvania</h3>
+            </div>
+            <div class="slide">
+
+                <q>
+                    The idea is not to test the limits of our planet and find out how much more damage it can take, but
+                    to come together and begin restoration and reversal. We owe it to every generation that comes after.
+                </q>
+                <h3>~ Ratan Tata</h3>
+            </div>
+            <div class="slide">
+
+                <q>
+                    Nature is reminding us to acknowledge, with humility, our quintessential equality and
+                    interdependence. It is a lesson — imparted at a heavy price — that will come handy in mitigating
+                    global challenges like climate change as well as in building a better, common future. </q>
+                <h3> ~ President Ram Nath Kovind</h3>
+            </div>
+
+            <div class="slide">
+                <q>
+                    India with two ‘made in India’ vaccines started the world’s largest vaccination program. Till now,
+                    more than 12 crore vaccine doses have been administered. From May 1, those above the age of 18 years
+                    can be vaccinated.
+                </q>
+                <h3>~ PM Modi</h3>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <hr>
+    <div class="icon-bar">
+        <a href="#" class="facebook"><i class="fa fa-facebook fa-2x"></i></a>
+        <a href="#" class="twitter"><i class="fa fa-twitter fa-2x"></i></a>
+        <a href="#" class="phone"><i class="fa fa-phone fa-2x"></i></a>
+        <a href="#" class="whatsapp"><i class="fa fa-whatsapp fa-2x"></i></a>
+        <a href="#" class="youtube"><i class="fa fa-youtube fa-2x "></i></a>
+    </div>
+
+
+
+
+    <hr>
+    <div class="name">
+        <img src="{% static 'ezgif.com-gif-maker.gif' %}" alt="">
+
+    </div>
+    <hr>
+
+    <div>
+        <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+        <div class="elfsight-app-150cc6bb-014c-4ca1-91ac-033786d64fa0"></div>
+    </div>
+    {% block content %} {% endblock %}
+
+
+
+    <hr>
+
+    <div class="stats">
+        <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+        <div class="elfsight-app-2aa42ffd-50a2-4471-8b51-9094c35f4f73"></div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
