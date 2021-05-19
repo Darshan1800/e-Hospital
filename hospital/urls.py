@@ -32,6 +32,12 @@ urlpatterns = [
         path('paitentlist', PaitentListView, name='paitent-list'),
         path('paitent/<int:pk>/',PaitentUpdateView.as_view(), name='paitent-edit'),
 
+
+
+        path('ambulancecreate', createambulancerequest, name='ambulance-create'),
+        path('ambulancelist', AmbulanceListView, name='ambulance-list'),
+        path('ambulance/<int:pk>/',AmbulanceEditView.as_view(), name='ambulance-edit'),
+
     ])),
  
 ]

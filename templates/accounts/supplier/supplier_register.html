@@ -1,64 +1,125 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'loginstyle.css' %}">
+    <title>Register Page</title>
+</head>
+<style>
+    .loginbox {
+        width: 75%;
+        height: auto;
+        background: lightblue;
+        color: black;
+        top: 75%;
+        /* margin-top: 50px; */
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        box-sizing: border-box;
+        padding: 7rem 3rem;
+    }
+
+    @media screen and (max-width: 800px) {
 
 
-    <div class="col-lg-6 offset-3">
-        <div class="box">
-            <h3 class="heading">New account</h3>
-            <p class="lead">Not our registered yet?</p>
-            <p class="text-muted">If you have any questions, please feel free to <a href="#">contact us</a>,
-                our customer service center is working for you 24/7.</p>
-            {% if form.errors %}
-                {% for field in form %}
-                    {% for error in field.errors %}
-                        <div class="alert alert-danger alert-dismissable">
-                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                            <strong>{{ error|escape }}</strong>
-                        </div>
-                    {% endfor %}
-                {% endfor %}
-                {% for error in form.non_field_errors %}
-                    <div class="alert alert-danger alert-dismissable">
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        <strong>{{ error|escape }}</strong>
-                    </div>
-                {% endfor %}
-            {% endif %}
-            <form action="" method="post">
-                {% csrf_token %}
-                {% for field in form %}
-                    {% if field.name == 'gender' %}
+        .loginbox {
+            width: 75%;
+            top: 100%;
+            margin-top: 300px;
+        }
 
-                        <div class="form-group">
-                            <label for="gender">Gender</label>
-                            <br>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="gender" id="male gender"
-                                       value="male">
-                                <label class="form-check-label" for="male">Male</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="gender" id="female"
-                                       value="female">
-                                <label class="form-check-label" for="female">Female</label>
-                            </div>
-                        </div>
+        .user {
+            display: none;
+        }
 
-                    {% else %}
+        .vl {
+            border-left: 6px solid black;
+            height: 600px;
+            padding: 10px;
+        }
+    }
+</style>
 
-                        <div class="form-group">
-                            <label for="id_{{ field.name }}">{{ field.label }}</label>
-                            <input type="{{ field.field.widget.input_type }}"
-                                   class="form-control"
-                                   name="{{ field.name }}"
-                                   id="id_{{ field.name }}"
-                                   placeholder="{{ field.field.widget.attrs.placeholder }}">
-                        </div>
+<body>
+    <div class="loginbox">
 
-                    {% endif %}
-                {% endfor %}
-                <div class="text-center">
-                    <button type="submit" class="btn btn-primary  py-2 px-4"><i class="fa fa-user-md"></i> Register
-                    </button>
+        <h1>Supplier Register</h1>
+        <form action="{% url 'accounts:supplier-register' %}" method="POST">
+
+            {% csrf_token %}
+
+            <div class="row" style="padding: 20px;">
+
+                <div class="col-sm" style="border:2px solid white; border-radius:10px; ">
+
+                    <p><label for="id_first_name">First Name:</label> <input type="text" name="first_name"
+                            maxlength="30" placeholder="Enter First Name" id="id_first_name"></p>
+                    <p><label for="id_last_name">Last Name:</label> <input type="text" name="last_name" maxlength="150"
+                            placeholder="Enter Last Name" id="id_last_name"></p>
+                    <p><label for="id_email">Email:</label> <input type="text" name="email" maxlength="254" autofocus=""
+                            placeholder="Enter Email" required="" id="id_email"></p>
+                    <p><label for="id_password1">Password:</label> <input type="password" name="password1"
+                            placeholder="Enter Password" required="" id="id_password1"> <span class="helptext"></span>
+                    </p>
+                    <ul>
+                        <li>
+                            <h3>Your password can't be too similar to your other personal information.</h3>
+                        </li>
+                        <li>
+                            <h3>Your password must contain at least 8 characters.</h3>
+                        </li>
+                        <li>
+                            <h3>Your password can't be a commonly used password.</h3>
+                        </li>
+                        <li>
+                            <h3>Your password can't be entirely numeric.</h3>
+                        </li>
+                    </ul>
+                    <p></p>
                 </div>
-            </form>
-        </div>
+
+                <div class="col-sm" style="border:2px solid white; border-radius:10px;">
+
+                    <p><label for="id_password2">Confirm Password:</label> <input type="password" name="password2"
+                            placeholder="Confirm Password" required="" id="id_password2"> <span class="helptext">Enter
+                            the same password
+                            as before, for verification.</span></p>
+                    <p><label for="id_gender">Gender:</label> <input type="text" name="gender" maxlength="10"
+                            required="" id="id_gender"></p>
+                    <p><label for="id_address">Address:</label> <textarea name="address" cols="40" rows="10"
+                            placeholder="Enter Address" id="id_address"></textarea></p>
+                    <p><label for="id_phone_number_0"> Phone Number:</label> <input type="text" name="phone_number_0"
+                            size="13" placeholder="Enter Phone Number" id="id_phone_number_0"><span
+                            class="phone-field-ext">&nbsp;&nbsp;ext.&nbsp;&nbsp;</span><input type="text"
+                            name="phone_number_1" size="4" placeholder="Enter Phone Number" id="id_phone_number_1">
+                        <span class="helptext">Contact phone number</span>
+                    </p>
+                    <p><label for="id_pincode">PinCode:</label> <input type="text" name="pincode" maxlength="6"
+                            placeholder="Enter PinCode" required="" id="id_pincode"></p>
+
+                </div>
+            </div>
+
+
+            <input type="submit" name="" value="Register Supplier">
+            <a href="/">Back to Home</a><br>
+
+        </form>
+
+
     </div>
+
+</body>
+
+</html>

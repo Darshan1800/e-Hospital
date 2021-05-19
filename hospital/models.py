@@ -24,8 +24,8 @@ class RoomModel(models.Model):
 
     # CHOICES
     STATUS_CHOICES = (
-        (COVID, 'Covid'),
-        (GENERAL, 'General'),
+        (COVID, 'COVID'),
+        (GENERAL, 'GENERAL'),
     )
 
     roomhospital = models.ForeignKey(User, on_delete=models.CASCADE,
@@ -101,3 +101,23 @@ class PaitentModel(models.Model):
                                related_name='room')
     def __str__(self):
         return self.bloodhospital.email
+
+
+
+class Ambulance(models.Model):
+    TYPE = (
+        ('ICU','ICU'),
+        ('OXYGEN','OXYGEN'),
+        ('GENERAL','GENERAL'),
+        ('COVID','COVID'),
+    
+        )
+    ambhospital = models.ForeignKey(User, on_delete=models.CASCADE,
+                               related_name='ambhospital')
+    ambtype=models.CharField(blank=True,null=True,choices=TYPE,max_length=20)
+    drivername=models.CharField(blank=True,null=True,max_length=50)
+    address=models.TextField()
+    status=models.BooleanField(default=True)
+    def __str__(self):
+        return self.drivername
+    

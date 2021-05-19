@@ -1,0 +1,28 @@
+{% for b in bloodbank_blood %}
+    <tr>
+      <td>{{b.id}}</td>
+      <td>{{b.bloodtype}}</td>
+      <td>{{b.required}}</td>
+      <td>{{b.message}}</td>
+    
+      <td>
+       
+       
+          
+        <label class="switch">
+            {% if b.status %}
+        <input type="checkbox" checked>
+        {% else %}
+        <input type="checkbox" >
+        {% endif %}
+        <span class="slider round"></span>
+          </label> 
+    
+    </td>
+    <td>  
+        <a class="fa fa-pencil"  href="{% url 'bloodbank:blood-edit' pk=b.id %}" ></a> |
+    </td>
+    </tr>
+  
+        {% endfor %}
+     

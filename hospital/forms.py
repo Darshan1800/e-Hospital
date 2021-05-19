@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import TextInput, Select, FileInput
 
-from hospital.models import DoctorModel,RoomModel,OxygenOrderModel,BloodOrderModel,PaitentModel
+from hospital.models import DoctorModel,RoomModel,OxygenOrderModel,BloodOrderModel,PaitentModel,Ambulance
 
 
 class DoctorCreateForm(forms.ModelForm):
@@ -168,3 +168,30 @@ class PaitentUpdateForm(forms.ModelForm):
              
         }
     
+
+class AmbulanceCreateForm(forms.ModelForm):
+    class Meta:
+        model=Ambulance
+        fields=['drivername','ambtype','address','status',]
+
+class SearchForm(forms.Form):
+    TYPE = (
+        ('ICU','ICU'),
+        ('OXYGEN','OXYGEN'),
+        ('GENERAL','GENERAL'),
+        ('COVID','COVID'),
+    
+        )
+    PATTYPE=(
+        ('COVID','COVID'),
+        ('NON-COVID','NON-COVID'),
+    )
+    REQUIRED=(
+        ('REQUIRED','REQUIRED'),
+        ('NOT-REQUIRED','NOT-REQUIRED'),
+    )
+    ambtype=forms.ChoiceField(choices=TYPE)
+    paitenttype=forms.ChoiceField(choices=PATTYPE)
+    oxygen=forms.ChoiceField(choices=REQUIRED)
+    blood=forms.ChoiceField(choices=REQUIRED)
+    address=forms.CharField()

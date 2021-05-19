@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import DoctorModel,RoomModel,OxygenOrderModel,BloodOrderModel
+from .models import DoctorModel,RoomModel,OxygenOrderModel,BloodOrderModel,Ambulance
 class DoctoreAdmin(admin.ModelAdmin):
 
     list_display = ('hospital','doctor_name','phone_number','status' )
@@ -23,7 +23,17 @@ class OxygenAdmin(admin.ModelAdmin):
 
     list_display = ('oxygenhospital','required','status', )
     search_fields = ('oxygenhospital',  )
+
+
+
+class AmbulanceAdmin(admin.ModelAdmin):
+
+    list_display = ('ambhospital','ambtype','status','drivername' )
+    search_fields = ('ambhospital', 'drivername' )
+
+
 admin.site.register(RoomModel, RoomAdmin)
 admin.site.register(DoctorModel, DoctoreAdmin)
 admin.site.register(OxygenOrderModel, OxygenAdmin)
 admin.site.register(BloodOrderModel, BloodAdmin)
+admin.site.register(Ambulance, AmbulanceAdmin)

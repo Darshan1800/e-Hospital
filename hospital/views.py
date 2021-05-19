@@ -8,7 +8,7 @@ from django.views.generic import CreateView, ListView,UpdateView
 from hospital.decorators import user_is_hospital
 from hospital.forms import *
 from accounts.models import User
-from hospital.models import DoctorModel,RoomModel,OxygenOrderModel,PaitentModel
+from hospital.models import DoctorModel,RoomModel,OxygenOrderModel,PaitentModel,Ambulance
 # Create your views here.
 import json
 
@@ -65,6 +65,7 @@ def createrooms(request):
         
     return render(request, 'hospital/roomcreate.html',{'form':form})
 
+@login_required
 def createoxyrequest(request):
     if(request.method=="POST"):
         form=OxygenCreateForm(request.POST)
@@ -81,6 +82,7 @@ def createoxyrequest(request):
     return render(request, 'hospital/oxygencreate.html',{'form':form})
 
 
+@login_required
 def createbloodrequest(request):
     if(request.method=="POST"):
         form=BloodCreateForm(request.POST)
@@ -98,6 +100,7 @@ def createbloodrequest(request):
 
 
 
+@login_required
 def createpaitentrequest(request):
     if(request.method=="POST"):
         form=PaitentCreateForm(request.POST)
@@ -114,6 +117,18 @@ def createpaitentrequest(request):
     return render(request, 'hospital/paitentcreate.html',{'form':form})
 
 
+@login_required()
+def createambulancerequest(request):
+    if request.method=="POST":
+        form=AmbulanceCreateForm(request.POST)
+        if form.is_valid():
+            instance=form.save(commit=False)
+            instance.ambhospital=request.user
+            instance.save()
+            return redirect("hospital:ambulance-list")
+    else:
+        form=AmbulanceCreateForm()
+    return render(request,'hospital/ambulancecreate.html',{'form':form})
 
 
 
@@ -210,6 +225,25 @@ class PaitentUpdateView(UpdateView):
         item = PaitentModel.objects.get(id=self.id)
         return redirect("hospital:paitent-list")
 
+
+
+class AmbulanceEditView(UpdateView):
+    model = Ambulance
+    form_class = AmbulanceCreateForm
+    context_object_name = 'a'
+    template_name = 'hospital/ambulanceedit.html'
+    
+    @method_decorator(login_required(login_url=reverse_lazy('accounts:login')))
+    @method_decorator(user_is_hospital)
+    def dispatch(self, *args, **kwargs):
+        self.id = kwargs['pk']
+        return super(AmbulanceEditView, self).dispatch(*args, **kwargs)
+
+    def form_valid(self, form):
+        form.save()
+        item = Ambulance.objects.get(id=self.id)
+        return redirect("hospital:ambulance-list")
+
 @login_required
 def DoctorListView(request):
     doctor=DoctorModel.objects.filter(hospital=request.user)
@@ -244,3 +278,13 @@ def BloodListView(request):
 def PaitentListView(request):
     paitents=PaitentModel.objects.filter(paitenthospital=request.user).order_by('-oxygenstatus')
     return render(request,"hospital/paitentlist.html",{"paitents":paitents})
+
+
+@login_required
+def AmbulanceListView(request):
+    ambulance=Ambulance.objects.filter(ambhospital=request.user).order_by('-status')
+    return render(request,"hospital/ambulancelist.html",{"ambulance":ambulance})
+
+
+
+
