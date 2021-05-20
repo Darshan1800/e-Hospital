@@ -1,28 +1,200 @@
-{% for b in bloodbank_blood %}
-    <tr>
-      <td>{{b.id}}</td>
-      <td>{{b.bloodtype}}</td>
-      <td>{{b.required}}</td>
-      <td>{{b.message}}</td>
-    
-      <td>
-       
-       
-          
-        <label class="switch">
-            {% if b.status %}
-        <input type="checkbox" checked>
-        {% else %}
-        <input type="checkbox" >
-        {% endif %}
-        <span class="slider round"></span>
-          </label> 
-    
-    </td>
-    <td>  
-        <a class="fa fa-pencil"  href="{% url 'bloodbank:blood-edit' pk=b.id %}" ></a> |
-    </td>
-    </tr>
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+  <link rel="stylesheet" href="{%static 'searchstyle.css' %}" />
+  <title>Search Results</title>
+</head>
+<style>
+  .head {
+    text-align: left;
+  }
+
+  .head h3 {
+    color: #034e9f;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px;
+  }
   
-        {% endfor %}
+</style>
+
+<body>
+
+  <div class="continer">
+    <div class="heading">
+      <h3>
+        Search Results...
+      </h3>
+    </div>
+    <hr>
+    
+    <div  style="margin-top: 50px; padding: 10px;">
+{% if user is not None %}
+      <h2 style="color: black;  margin: auto;" >Hospitals Nearby</h2>
+      <div style="overflow-x: auto;">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Hospital Name</th>
+              <th scope="col">Hospital Admin </th>
+              <th scope="col">Hospital  Address</th>
+              <th scope="col">Hospital Number</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            
+            {% for a in user %}
+            <tr>
+              <th scope="row">{{a.first_name}}</th>
+              <td>{{a.last_name}}</td>
+              <td>{{a.address}}</td>
+              <td>{{a.phone_number}}</td>
+              
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+{% endif %}
+
+      <h2 style="color: black;  margin: auto;" >Ambulance</h2>
+      <div style="overflow-x: auto;">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Driver Name</th>
+              <th scope="col">Driver Address</th>
+              <th scope="col">Ambulance Type</th>
+              <th scope="col">Driver Number</th>
+              <th scope="col"> Hospital</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for a in ambulance %}
+            <tr>
+              <th scope="row">{{a.drivername}}</th>
+              <td>{{a.address}}</td>
+              <td>{{a.ambtype}}</td>
+              <td>{{a.phone_number}}</td>
+              <td>{{a.ambhospital.first_name}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+        <h2 style="color: black;  margin: auto;" >Rooms</h2>
+        <div style="overflow-x: auto;">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Hospital Name</th>
+              <th scope="col">Hospital Address</th>
+              <th scope="col">Hospital Number</th>
+              <th scope="col"> Room Number</th>
+              <th scope="col">Number of beds</th>
+              <th scope="col">Filled beds</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for r in rooms %}
+            <tr>
+              <th scope="row">{{r.roomhospital.first_name}}</th>
+              <td>{{r.roomhospital.address}}</td>
+              <td>{{r.roomhospital.phone_number}}</td>
+              <td>{{r.room_no}}</td>
+              <td>{{r.no_beds}}</td>
+              <td>{{r.filled_beds}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+        
+        
+        <h2 style="color: black;  margin: auto;" >Oxygen Supplier</h2>
+        <div style="overflow-x: auto;">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Supplier Name</th>
+              <th scope="col">Supplier Address</th>
+              <th scope="col">Supplier Number</th>
      
+              <th scope="col">Number of Cylinders</th>
+          
+            </tr>
+          </thead>
+          <tbody>
+            {% for r in oxygenbank_oxygen %}
+            <tr>
+              <th scope="row">{{r.oxygensupplier.first_name}}||{{r.oxygensupplier.last_name}}</th>
+              <td>{{r.oxygensupplier.address}}</td>
+              <td>{{r.oxygensupplier.phone_number}}</td>
+              <td>{{r.no_cylinder}}</td>
+         
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    <!-- The Modal -->
+    <h2 style="color: black;  margin: auto;" >Blood Bank</h2>
+    <div style="overflow-x: auto;">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">BloodBank Name</th>
+          <th scope="col">BloodBank Address</th>
+          <th scope="col">BloodBank Number</th>
+ 
+          <th scope="col">Blood Type</th>
+          <th scope="col">No. of packets(1pkt=1lts.)</th>
+      
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in bloodbank_blood %}
+        <tr>
+          <th scope="row">{{r.blooduser.first_name}}||{{r.blooduser.last_name}}</th>
+          <td>{{r.blooduser.address}}</td>
+          <td>{{r.blooduser.phone_number}}</td>
+          <td>{{r.bloodtype}}</td>
+          <td>{{r.required}}</td>
+     
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+
+
+    
+  </div>
+  
+
+
+
+
+
+
+
+
+  
+</body>
+
+</html>

@@ -172,7 +172,7 @@ class PaitentUpdateForm(forms.ModelForm):
 class AmbulanceCreateForm(forms.ModelForm):
     class Meta:
         model=Ambulance
-        fields=['drivername','ambtype','address','status',]
+        fields=['drivername','ambtype','address','status','phone_number']
 
 class SearchForm(forms.Form):
     TYPE = (

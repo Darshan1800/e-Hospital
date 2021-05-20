@@ -72,6 +72,21 @@
   box-shadow: 6px 10px 9px #888888;
   
 }
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  /* this adds the "card" effect */
+  padding: 16px;
+  text-align: center;
+  background-color: #e5edf5;
+  height: 300px;
+  margin-left: 180px;
+  width: 300px;
+  transition: transform .2s;
+  border-radius: 20px;
+  border: 1px solid #034e9f;
+}
+
 .pop__form > input{
 	margin: 15px auto;
 	display: block;
@@ -84,15 +99,54 @@
   font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
 }
+
+@media screen and (max-width: 600px) {
+  .column {
+    width: 80%;
+    display: block;
+    margin: auto;
+    margin-left: 20px;
+    padding: 10px;
+  }
+
+  .s-wrap{
+    height: 200px;
+  }
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    /* this adds the "card" effect */
+    padding: 16px;
+    text-align: center;
+    background-color: #e5edf5;
+    height: 300px;
+    width: 100%;
+    margin-left: 0;
+  }
+  .card1
+  {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    /* this adds the "card" effect */
+    padding: 16px;
+    text-align: center;
+    background-color: #e5edf5;
+    height: 300px;
+    width: 100%;
+    margin-left: 0;
+  }
+}
+label{
+  color: #034e9f;
+  font-size: 20px;
+}
 </style>
 <div class="row">
     <div class="column">
         <div class="card">
 
             <img src="{% static 'Registration stats (1).gif' %}" alt="">
-        <h3 class="card__text">TOTAL HOSPITALS -  90</h3>
-        <h3 class="card__text">TOTAL BLOOK BLANKS - 200</h3>
-        <h3 class="card__text">OXYGEN SUPPLIERS - 200</h3>
+        <h3 class="card__text">TOTAL HOSPITALS -  {{hospital_count}}</h3>
+        <h3 class="card__text">TOTAL BLOOK BLANKS - {{bloodbank_count}}</h3>
+        <h3 class="card__text">OXYGEN SUPPLIERS - {{supplier_count}}</h3>
 
 
         </div>
@@ -100,7 +154,7 @@
     <div class="column">
         <div class="card1">
             <a href="#" id="button" class="card__button">Click here</a>
-        <h3 class="card__text">TO FIND HOSPITALS OR PLASMA O2 CYLINDERS</h3>
+        <h3 class="card__text">TO FIND<br><br> HOSPITALS OR <br><br> PLASMA  <br><br>OXYGEN <br><br> CYLINDERS</h3>
         <div class="bg-modal">
           <div class="modal-contents">
 
@@ -109,7 +163,7 @@
 
             <form action="{% url 'home' %}" method="POST" class="pop__form">
              
-              
+   
               {% csrf_token %}
                   {{form.as_p}}
                   <input type="submit" value="Submit" class="card__button">
@@ -141,9 +195,9 @@
         <div class="card">
             
             <img src="{% static 'Beneficiary status (1).gif' %}" alt="">
-        <h3 class="card__text">BEDS ALLOCATED- 90</h3>
-        <h3 class="card__text">O2 CYLINDERS - 200</h3>
-        <h3 class="card__text">PLASMA DONORS - 200</h3>
+        <h3 class="card__text">BEDS ALLOCATED- {{room_count}}</h3>
+        <h3 class="card__text">OXYGEN CYLINDERS - {{oxygen_count}}</h3>
+        <h3 class="card__text">PLASMA DONORS - {{blood_count}}</h3>
         </div>
     </div>
 </div>

@@ -4,137 +4,158 @@
 
 {% block content %}
 <style>
-    #doctor {
-  border-radius: 2px solid grey;
-  overflow-x:auto;
-  width: 100%;
-}
+  #doctor {
+    border-radius: 2px solid grey;
+    overflow-x: auto;
+    width: 100%;
+  }
 
-#doctor td, #doctor th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
+  #doctor td,
+  #doctor th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
 
-#doctor tr:nth-child(even){background-color: #f2f2f2;}
+  #doctor tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
 
-#doctor tr:hover {background-color: #ddd;}
+  #doctor tr:hover {
+    background-color: #ddd;
+  }
 
-#doctor th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: rgb(2, 5, 9);;
-  color: white;
-}
+  #doctor th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: rgb(2, 5, 9);
+    ;
+    color: white;
+  }
 
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
 
-.switch input { 
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
 
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
 
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
 
-input:checked + .slider {
-  background-color: #2196F3;
-}
+  input:checked+.slider {
+    background-color: #2196F3;
+  }
 
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
+  input:focus+.slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
 
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
+  input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
 
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
 
-.slider.round:before {
-  border-radius: 50%;
-}
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+  .create {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: left;
+
+  }
+
+  .create>a {
+    color: white;
+  }
 </style>
 <main>
-    <div class="main__container">
-        <button class="" href=""> <a href="{% url 'hospital:room-create' %}">Create</a> </button>
-<table id="doctor">
-     
-         
-    <tr>
-      <th>Room No.</th>
-      <th>Room type</th>
-      <th>Total Beds</th>
-      <th>Filled Beds</th>
-      <th>Remaining Beds</th>
-      <th>Status </th>
-      <th colspan="2">Action</th>
-    </tr>
-    {% for r in rooms %}
-    <tr>
-      <td>{{r.room_no}}</td>
-      <td>{{r.room_type}}</td>
-      <td>{{r.no_beds}}</td>
-      <td>{{r.filled_beds}}</td>
-      <td>{{r.rem_beds}}</td>
-      <td>
-       
-       
-          
-        <label class="switch">
+  <div class="main__container">
+    <button class="create" href=""> <a href="{% url 'hospital:room-create' %}">Create</a> </button>
+    <table id="doctor">
+
+
+      <tr>
+        <th>Room No.</th>
+        <th>Room type</th>
+        <th>Total Beds</th>
+        <th>Filled Beds</th>
+        <th>Remaining Beds</th>
+        <th>Status </th>
+        <th colspan="2">Action</th>
+      </tr>
+      {% for r in rooms %}
+      <tr>
+        <td>{{r.room_no}}</td>
+        <td>{{r.room_type}}</td>
+        <td>{{r.no_beds}}</td>
+        <td>{{r.filled_beds}}</td>
+        <td>{{r.rem_beds}}</td>
+        <td>
+
+
+
+          <label class="switch">
             {% if r.status %}
-        <input type="checkbox" checked>
-        {% else %}
-        <input type="checkbox" >
-        {% endif %}
-        <span class="slider round"></span>
-          </label> 
-    
-    </td>
-    <td>  
-        <a class="fa fa-pencil"  href="{% url 'hospital:room-edit' pk=r.id %}" ></a> |
-    </td>
-    </tr>
-  
-        {% endfor %}
-      </table>
+            <input type="checkbox" checked>
+            {% else %}
+            <input type="checkbox">
+            {% endif %}
+            <span class="slider round"></span>
+          </label>
 
-    </div>
-  </main>
+        </td>
+        <td>
+          <a class="fa fa-pencil" href="{% url 'hospital:room-edit' pk=r.id %}"></a> |
+        </td>
+      </tr>
+
+      {% endfor %}
+    </table>
+
+  </div>
+</main>
 
 
-  
+
 
 {% endblock %}

@@ -86,10 +86,23 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+.create{
+  background-color: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      float: left;
+
+}
+.create >a{
+  color: white;
+}
 </style>
 <main>
     <div class="main__container">
-        <button class="" href=""> <a href="{% url 'hospital:blood-create' %}">Create</a> </button>
+        <button class="create" href=""> <a href="{% url 'hospital:blood-create' %}">Create</a> </button>
 <table id="doctor">
      
          

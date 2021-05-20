@@ -275,7 +275,7 @@ img:hover {
   /* this adds the "card" effect */
   padding: 16px;
   text-align: center;
-  background-color: #f1f1f1;
+  background-color: #e5edf5;
   height: 300px;
   margin-left: 180px;
   width: 300px;
@@ -308,7 +308,7 @@ img:hover {
     /* this adds the "card" effect */
     padding: 16px;
     text-align: center;
-    background-color: #f1f1f1;
+    background-color: #e5edf5;
     height: 300px;
     width: 100%;
     margin-left: 0;

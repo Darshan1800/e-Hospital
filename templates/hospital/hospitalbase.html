@@ -3,117 +3,174 @@
 
 
 {% block content %}
+
 <main>
-    <div class="main__container">
-      <!-- MAIN TITLE STARTS HERE -->
-    
-      <div class="main__title">
-        
-        <div class="main__greeting">
-          <h1>{{request.user.role}}</h1>
-          <p>Welcome to your admin dashboard</p>
-        </div>
+  <div class="main__container">
+    <!-- MAIN TITLE STARTS HERE -->
+
+    <div class="main__title">
+
+      <div class="main__greeting">
+        <h1>{{request.user.role}}</h1>
+        <p>Welcome to your admin dashboard</p>
       </div>
-
-      <!-- MAIN TITLE ENDS HERE -->
-
-      <!-- MAIN CARDS STARTS HERE -->
-      <div class="main__cards">
-        <div class="card">
-          <i
-            class="fa fa-wheelchair-alt fa-2x text-red"
-            aria-hidden="true"
-          ></i>
-          <div class="card_inner">
-            <p class="text-primary-p">Number of Patients</p>
-            <span class="font-bold text-title">578</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <i class="fa fa-h-square fa-2x text-red" aria-hidden="true"></i>
-          <div class="card_inner">
-            <p class="text-primary-p">Patients Recovered </p>
-            <span class="font-bold text-title">2467</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <i
-            class="fa fa-user-md fa-2x text-red"
-            aria-hidden="true"
-          ></i>
-          <div class="card_inner">
-            <p class="text-primary-p">Doctors status </p>
-            <span class="font-bold text-title">340</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <i
-            class="fa fa-ambulance fa-2x text-red"
-            aria-hidden="true"
-          ></i>
-          <div class="card_inner">
-            <p class="text-primary-p">Ambulance Availability  </p>
-            <span class="font-bold text-title">645</span>
-          </div>
-        </div>
-      </div>
-      <!-- MAIN CARDS ENDS HERE -->
-
-      <!-- CHARTS STARTS HERE -->
-      <div class="charts">
-        <div class="charts__left">
-          <div class="charts__left__title">
-            <div>
-              <h1>Daily Data</h1>
-              
-            </div>
-            <i class="fa fa-file" aria-hidden="true"></i>
-
-            
-          </div>
-
-          <div id="apex1"></div>
-          
-          
-        </div>
-
-        <div class="charts__right">
-          <div class="charts__right__title">
-            <div>
-              <h1>Status Reports</h1>
-              
-            </div>
-            <i class="fa fa-check-square-o " aria-hidden="true"></i>
-          </div>
-          
-          <div class="charts__right__cards">
-            <div class="card1">
-              <i class="fa fa-tint fa-2x text-red " aria-hidden="true"></i>
-              <h1>Blood</h1>
-              <p>200</p>
-            </div>
-
-            <div class="card2">
-              <i class="fa fa-medkit fa-2x text-red " aria-hidden="true"></i>
-              <h1>Oxygen</h1>
-              <p>40</p>
-            </div>
-
-            <div class="card3">
-              <i class="fa fa-heartbeat fa-2x text-red " aria-hidden="true"></i>
-              <h1>Patients Log </h1>
-              <p>3</p>
-            </div>
-
-            
-          </div>
-        </div>
-      </div>
-      <!-- CHARTS ENDS HERE -->
     </div>
-  </main>
+
+    <!-- MAIN TITLE ENDS HERE -->
+
+    <!-- MAIN CARDS STARTS HERE -->
+    <div class="main__cards">
+      <div class="card">
+        <i class="fa fa-wheelchair-alt fa-2x text-red" aria-hidden="true"></i>
+        <div class="card_inner">
+          <p class="text-primary-p">Number of Patients</p>
+          <span class="font-bold text-title"></span>
+        </div>
+      </div>
+
+      <div class="card">
+        <i class="fa fa-h-square fa-2x text-red" aria-hidden="true"></i>
+        <div class="card_inner">
+          <p class="text-primary-p">Patients Recovered </p>
+          <span class="font-bold text-title"></span>
+        </div>
+      </div>
+
+      <div class="card">
+        <i class="fa fa-user-md fa-2x text-red" aria-hidden="true"></i>
+        <div class="card_inner">
+          <p class="text-primary-p">Doctors status </p>
+          <span class="font-bold text-title"></span>
+        </div>
+      </div>
+
+      <div class="card">
+        <i class="fa fa-ambulance fa-2x text-red" aria-hidden="true"></i>
+        <div class="card_inner">
+          <p class="text-primary-p">Ambulance Availability </p>
+          <span class="font-bold text-title"></span>
+        </div>
+      </div>
+    </div>
+    <!-- MAIN CARDS ENDS HERE -->
+
+    <!-- CHARTS STARTS HERE -->
+    <div class="charts">
+      <div class="charts__left">
+        <div class="charts__left__title">
+          <div>
+            <h1>Profile </h1>
+
+          </div>
+          <i class="fa fa-file" aria-hidden="true"></i>
+
+
+        </div>
+        <style>
+          .profile {
+            background-color: brown;
+            height: 100%;
+            color: white;
+            border: 1px solid darkred;
+            border-radius: 5px;
+          }
+
+          .profile_row {
+            margin-top: 5px;
+            padding: 5px;
+            border: 2px solid white;
+            border-radius: 6px;
+          }
+
+          .profile_container {
+            padding: 15px;
+            overflow-x: auto;
+          }
+
+          .profile_row>h1 {
+            font-size: 27px;
+          }
+
+          table {
+            border-collapse: collapse;
+            width: 100%;
+            border: 2px solid white;
+            border-radius: 10px;
+            font-family: cursive;
+          }
+
+          th,
+          td {
+            text-align: left;
+            padding: 8px;
+            font-size: 30px;
+            border: 2px solid white;
+            border-radius: 10px;
+            
+          }
+
+          
+        </style>
+        <div class="profile">
+          <div class="profile_container">
+              <table>
+                <tr>
+                  <td><h5>Name:</h5></td>
+                  <td><h6>{{request.user.last_name}}</h6></td>
+                </tr>
+                <tr>
+                  <td><h5>Address:</h5></td>
+                  <td><h6>{{request.user.address}}</h6></td>
+                </tr>
+                <tr>
+                  <td><h5>Phone Number:</h5></td>
+                  <td><h6>{{request.user.phone_number}}</h6></td>
+                </tr>
+                <tr>
+                  <td><h5>Last Login:</h5></td>
+                  <td><h6>{{request.user.last_login}}</h6></td>
+                </tr>
+              </table>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="charts__right">
+        <div class="charts__right__title">
+          <div>
+            <h1>Status Reports</h1>
+
+          </div>
+          <i class="fa fa-check-square-o " aria-hidden="true"></i>
+        </div>
+
+        <div class="charts__right__cards">
+          <div class="card1">
+            <i class="fa fa-tint fa-2x text-red " aria-hidden="true"></i>
+            <h1>Blood</h1>
+            <p></p>
+          </div>
+
+          <div class="card2">
+            <i class="fa fa-medkit fa-2x text-red " aria-hidden="true"></i>
+            <h1>Oxygen</h1>
+            <p></p>
+          </div>
+
+          <div class="card3">
+            <i class="fa fa-heartbeat fa-2x text-red " aria-hidden="true"></i>
+            <h1>Patients Log </h1>
+            <p></p>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+    <!-- CHARTS ENDS HERE -->
+  </div>
+</main>
 
 {% endblock %}

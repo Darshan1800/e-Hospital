@@ -118,6 +118,7 @@ class Ambulance(models.Model):
     drivername=models.CharField(blank=True,null=True,max_length=50)
     address=models.TextField()
     status=models.BooleanField(default=True)
+    phone_number = PhoneField(blank=True, help_text='Contact phone number')
     def __str__(self):
         return self.drivername
     

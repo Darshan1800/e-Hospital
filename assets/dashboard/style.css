@@ -17,7 +17,7 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a5aaad;
+  background: #c4c4c4;
 }
 
 * {
@@ -133,6 +133,7 @@ main {
 
 .main__container {
   padding: 20px 35px;
+  background-color: #c4c4c4;
 }
 
 .main__title {

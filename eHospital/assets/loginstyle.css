@@ -1,0 +1,110 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-image: url(loginimg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: dodgerblue;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+.loginbox{
+    
+    background: lightblue;
+    color: black;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 7rem 3rem;
+}
+
+.user{
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    position: absolute;
+    left: 35%;
+    top: -5rem;
+    left: calc(50% -5rem);
+}
+
+h1{
+    margin: 0;
+    padding: 0 0 2rem;
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+.loginbox p{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    font-size: 1.9rem;
+}
+
+.loginbox input{
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.loginbox input[type="text"], input[type="password"]
+{
+    border: none;
+    border-bottom: .2rem solid #fff;
+    background: transparent;
+    outline: none;
+    height: 4rem;
+    color: lightcoral;
+    font-size: 2rem;
+}
+
+.loginbox input[type="submit"]
+{
+    border:none;
+    outline: none;
+    height: 4.2rem;
+    background: red;
+    color: white;
+    font-size: 2rem;
+    border-radius: 2rem;
+}
+
+.loginbox input[type="submit"]:hover
+{
+    cursor: pointer;
+    background: darkorange;
+    color: #000;
+}
+
+.loginbox a{
+    text-decoration: none;
+    font-size: 1.9rem;
+    line-height: 3.5rem;
+    color: darkviolet;
+}
+
+.loginbox a:hover 
+{
+    color: #e90f33;
+
+}
+
+@media screen and (max-width: 800px) {
+ 
+    
+    .loginbox{
+        width: 75%;
+      
+    }
+    .user{
+        width: 100px;
+    }
+    
+      }

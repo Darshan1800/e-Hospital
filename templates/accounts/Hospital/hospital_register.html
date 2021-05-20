@@ -29,6 +29,9 @@
         box-sizing: border-box;
         padding: 7rem 3rem;
     }
+    textarea{
+        margin-top: 20px;
+    }
 
     @media screen and (max-width: 800px) {
 
@@ -47,6 +50,9 @@
             border-left: 6px solid black;
             height: 600px;
             padding: 10px;
+        }
+        textarea{
+            width: 100%;
         }
     }
 </style>
@@ -71,14 +77,14 @@
                             placeholder="Enter Password" required="" id="id_password1"> <span class="helptext"></span>
                     </p>
                     <ul>
-                        <li>Your password can't be too similar to your other personal information.</li>
-                        <li>Your password must contain at least 8 characters.</li>
-                        <li>Your password can't be a commonly used password.</li>
-                        <li>Your password can't be entirely numeric.</li>
+                        <li><h4>Your password can't be too similar to your other personal information.</h4></li>
+                        <li><h4>Your password must contain at least 8 characters.</h4></li>
+                        <li><h4>Your password can't be a commonly used password.</h4></li>
+                        <li><h4>Your password can't be entirely numeric.</h4></li>
                     </ul>
                     <p></p>
                 </div>
-                <div class="vl"></div>
+              
                 <div class="col-sm" style="border:2px solid white; border-radius:10px;">
                     <p><label for="id_password2">Confirm Password:</label> <input type="password" name="password2"
                             placeholder="Confirm Password" required="" id="id_password2"> <span class="helptext">Enter
