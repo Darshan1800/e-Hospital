@@ -30,7 +30,10 @@ The hospital module has all the necessary information regarding the availability
 
 <h3>Blood Bank</h3>
 The Blood Bank module has information regarding the the blood that is available. The Blood Bank also should register similarly to the Hospital. After the registration the details regarding the blood type, quantity available in the Blood Bank are created. The dashboard consists of 2 sections Blood Create and Blood List. Blood create section is used to add a new item to blood list along with its details. The Blood List section displays all the information of blood such as blood group, quantity, status, along with a message. The Blood list can be updated regularly as they vary by using the edit option given at the end of the list. Based on all the information regarding blood available in the Blood Bank, people can contact the required Blood Bank easily with contact details available.
-  
+
+<h3> Oxygen Supplier</h3>
+The Oxygen Supplier module has necessary information regarding the the oxygen that is available. The Oxygen Supplier should register with all their details such as name, address and contact details. After the registration the information related to the oxygen is created. The dashboard consists of Create and Invoice sections. The Create section is used to add a new entry of oxygen details to Invoice list. The Invoice section displays all the information related to oxygen like number of cylinders, message, requirement status. The list can be updated as they vary by using the edit option given at the end of the list. Based on information regarding the oxygen available with the Oxygen Supplier, people can contact the required Oxygen Supplier easily with contact details available.
+
 ## <h2>Software Requirements:<h2>
   - Python 
   - Django
