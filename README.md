@@ -2,11 +2,11 @@
 <h1>Title of the Project: E-hospital</h1>
 A website to narrow down the gap between service providers and people in need during the covid-19 pandemic.
 <h2>Description:</h2>
-During the past few weeks India has witness the most diffcult times out of which we had noted few points and devoloped a possible soultion to these issues.<br>
-- Shortage of Beds.<br>
-- Unavailability of oxygen. <br>
-- Delivery of plasma/Blood.<br> 
-- Treatment of non-covid patients. <br>
+ During the past few weeks India has witness the most diffcult times out of which we had noted few points and devoloped a possible soultion to these issues.<br>
+  - Shortage of Beds.<br>
+  - Unavailability of oxygen. <br>
+  - Delivery of plasma/Blood.<br> 
+  - Treatment of non-covid patients. <br>
 
 Basic idea is to connect patients in need to hospitals, oxygen suppliers, blood bank all at one place thereby bringing the smooth connectivity in chain. We came up with a solution consiting of three modules namely Hospital, Blood bank and Supplier, making all these data available at a single access point to the user.
 
@@ -48,4 +48,9 @@ The Oxygen Supplier module has necessary information regarding the the oxygen th
 ```
 $ pip install -r requirements.txt
 ```
+## <h2>Team members <h2>
+  - Darshan S Bharadwaj :- https://github.com/Darshan1800
+  - Manoj M             :- https://github.com/manu042k
+  - Yogeshwar K         :- https://github.com/YogeshwarK30
+  - Vikram R            :- https://github.com/VikramR3
 
