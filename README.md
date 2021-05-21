@@ -1,4 +1,4 @@
-# Team : eYHC#69
+# Team : eYHC#70
 <h1>Title of the Project: E-hospital</h1>
 A website to narrow down the gap between service providers and people in need during the covid-19 pandemic.
 <h2>Description:</h2>
@@ -14,7 +14,7 @@ Basic idea is to connect patients in need to hospitals, oxygen suppliers, blood 
 The navigation bar enables one to register, login, look for the lastest news on covid-19 from WHO and ICMR, about button redirects to the breif infomation about our site ,which is then followed by a slidebar with qoutes from diffrent people to boost peoples' confidence and to provide lastest updates as well. The icon bar on the left redirects to respective soical media links of the government authority. The main section has three cards, one to show the registeration stats of our website, other to benificary stats, while the center card has a button for the patients,on clicking pops-up a card that takes basic infomation on requirments which then open up a search results page. Footer consits of daily cases reported in the world and India.
 
 <h3>Search Results:</h3>
-On the homepage the data of person's requiremnet list along with his address is collected, which is then matched with our database depending on the city our page show the results with all the credentials.
+On the homepage the data of person's requiremnet list along with his address is collected, which is then matched with our database depending on the city our page show the results with all the credentials.<br>
 
 
 Input         | Types                    | Results 
