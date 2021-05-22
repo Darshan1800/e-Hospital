@@ -21,7 +21,7 @@ class User(AbstractUser):
                               })
 
     address=models.TextField(blank=True,null=True,default="")
-    phone_number = PhoneField(blank=True, help_text='Contact phone number')
+    phone_number = PhoneField(blank=True, )
 
     pincode=models.CharField( max_length=6, default="")
     
