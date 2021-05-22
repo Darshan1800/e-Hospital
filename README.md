@@ -55,9 +55,22 @@ At first the homepage is common to all the users ,here it either one can registe
 ## <h3>Data Flow Diagram</h3>
  while the process of registration the data is been collected and store in database ,in the dashboard the data can be updated,edited and deleted. Here if any commodity is critcal in number an auto alert mails is sent to respective supplier. The user serach data is taken and matched with the database after filtering out based on loaction results are displayed . 
 ![alt text](https://github.com/Darshan1800/ehos/blob/master/Dataflow_diagram.png?raw=true "Process Flow Diagram") 
-## <h2>Team members <h2>
+
+ ## <h3>Website link</h3>
+ link :http://ehospital88.pythonanywhere.com/
+ <br>For running at local host
+ ```
+ $ git clone https://github.com/Darshan1800/ehos.git
+ ```
+ <br>command prompt
+ ```
+ $ python manage.py runserver
+ ```
+ ## <h2>Team members <h2>
   - Darshan S Bharadwaj :- https://github.com/Darshan1800
   - Manoj M             :- https://github.com/manu042k
   - Yogeshwar K         :- https://github.com/YogeshwarK30
   - Vikram R            :- https://github.com/VikramR3
 
+
+ 
