@@ -48,6 +48,9 @@ The Oxygen Supplier module has necessary information regarding the the oxygen th
 ```
 $ pip install -r requirements.txt
 ```
+## <h3>Process Flow Diagram</h3>
+![alt text](https://github.com/Darshan1800/ehos/blob/master/process_flow_diagram.png?raw=true "Process Flow Diagram")
+
 ## <h2>Team members <h2>
   - Darshan S Bharadwaj :- https://github.com/Darshan1800
   - Manoj M             :- https://github.com/manu042k
