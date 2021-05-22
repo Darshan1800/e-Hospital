@@ -13,7 +13,7 @@ class SupplierRegistrationForm(UserCreationForm):
     
     def __init__(self, *args, **kwargs):
         super(SupplierRegistrationForm, self).__init__(*args, **kwargs)
-        self.fields['gender'].required = True
+        
         self.fields['first_name'].label = "First Name"
         self.fields['last_name'].label = "Last Name"
         self.fields['password1'].label = "Password"
@@ -82,11 +82,7 @@ class SupplierRegistrationForm(UserCreationForm):
             }
         }
 
-    def clean_gender(self):
-        gender = self.cleaned_data.get('gender')
-        if not gender:
-            raise forms.ValidationError("Gender is required")
-        return gender
+    
 
     def save(self, commit=True):
         user = super(UserCreationForm, self).save(commit=False)
