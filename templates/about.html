@@ -2,6 +2,103 @@
 
 {% load static %}
 {% block content %}
+<style>
+    .box{
+        width: 75%;
+        height: 50%;
+        background-color: white;
+        margin: auto;
+        color: black;
+        border: 2px solid white;
+        border-radius: 10px;
+        
+    }
+    .box__heading{
+        margin: auto;
+        width: 300px;
+        background-color: lightgray;
+        text-align: center;
+        border: 2px solid lightblue;
+        color: #034e9f;
+        border-radius: 5px;
+        box-shadow: 5px 7px 7px ;
+        font-family: cursive;
+        margin-top: 20px;
+    }
+    .box__members{
+        width: 300px;
+        background-color: lightblue;
+        margin-top: 10px;
+        margin-left: 10px;
+        border: 3px solid blue;
+        border-radius: 5px;
+    }
+    .box__members__head{
+        text-align: center;
+        font-family: cursive;
+    }
+    li{
+        padding: 5px;
+        
+    }
 
-<h2>About Page</h2>
+    .box div{
+        flex: 1;
+        -ms-flex: 1
+    }
+    .box__description{
+    
+        
+        background-color: lightblue;
+        margin-top: 10px;
+        border: 3px solid blue;
+        border-radius: 5px;
+    }
+    .box__description p{
+        margin-left: 50px;
+       
+        font-size: 20px;
+    }
+    @media screen and (max-width: 600px) {
+  .box__members {
+    
+    margin: auto;
+    margin-top: 8px;
+  }
+  .box{
+      padding: 5px;
+  }
+ 
+
+}
+
+</style>
+<div class="box">
+    <h2 class="box__heading">About Page</h2>
+
+    <div class="box__members">
+        <h2 class="box__members__head">Members</h2>
+        <ul>
+            <li><b>Manoj M</b></li>
+            <li><b>Yogeshwar.K</b></li>
+            <li><b>Vikram Raju</b></li>
+            <li><b>Darshan S Bharadwaj</b></li>
+        </ul>
+    </div>
+
+    <div class="box__description">
+        <p>A <strong>web application</strong> to narrow down the gap between service providers and people in need during the covid-19 pandemic.</p>
+
+        
+        <p>During the past few weeks India has witness the most diffcult times out of which we had noted few points and devoloped a possible soultion to these issues.</p>
+       
+        <ul>
+            <li>- Shortage of Beds.</li>
+            <li>- Unavailability of oxygen.</li>
+                <li>- Delivery of plasma/Blood.</li>
+                    <li>- Treatment of non-covid patients.</li>
+        </ul>
+<p>Basic idea is to connect patients in need to hospitals, oxygen suppliers, blood bank all at one place thereby bringing the smooth connectivity in chain. We came up with a solution consiting of three modules namely Hospital, Blood bank and Supplier, making all these data available at a single access point to the user.</p>
+    </div>
+</div>
 {% endblock %}

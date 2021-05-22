@@ -17,17 +17,19 @@ from django.views.generic import FormView, TemplateView
 from django.contrib.messages.views import SuccessMessageMixin
 
 
+from django.core.mail import EmailMessage
+
 class DashboardView(ListView):
-    
+
     template_name = 'hospital/hospitalbase.html'
-  
+
 
     @method_decorator(login_required(login_url=reverse_lazy('accounts:login')))
     @method_decorator(user_is_hospital)
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(self.request, *args, **kwargs)
 
-    
+
     def get_queryset(self):
 
         return None
@@ -38,15 +40,60 @@ def createdoctor(request):
         form=DoctorCreateForm(request.POST)
         if form.is_valid():
                 # save article to db
-                
+
                 instance = form.save(commit=False)
                 instance.hospital = request.user
                 instance.save()
                 return redirect("hospital:doctor-list")
     else:
         form=DoctorCreateForm()
-        
+
     return render(request, 'hospital/doctorcreate.html',{'form':form})
+
+
+@login_required
+def createoxyrequest(request):
+    mail= list(User.objects.filter(role='supplier').values_list ('email',flat=True))
+    print(mail)
+    if(request.method=="POST"):
+        form=OxygenCreateForm(request.POST)
+        if form.is_valid():
+                body=form.cleaned_data['message']
+                req=form.cleaned_data['required']
+                email = EmailMessage('e-Hos-pital',body +"Required Oxygen Cylinder:"+str(req)+"Units" , to=mail)
+                email.send()
+                instance = form.save(commit=False)
+                instance.oxygenhospital = request.user
+                instance.save()
+                return redirect("hospital:oxygen-list")
+    else:
+        form=OxygenCreateForm()
+
+    return render(request, 'hospital/oxygencreate.html',{'form':form})
+
+
+@login_required
+def createbloodrequest(request):
+    mail= list(User.objects.filter(role='bloodbank').values_list ('email',flat=True))
+    print(mail)
+    if(request.method=="POST"):
+        form=BloodCreateForm(request.POST)
+        if form.is_valid():
+                # save article to db
+                body=form.cleaned_data['message']
+                req=form.cleaned_data['required']
+                email = EmailMessage('e-Hos-pital',body +"Required Blood :"+str(req)+"Units" , to=mail)
+                email.send()
+                instance = form.save(commit=False)
+                instance.bloodhospital = request.user
+                instance.save()
+                return redirect("hospital:blood-list")
+    else:
+        form=BloodCreateForm()
+
+    return render(request, 'hospital/bloodcreate.html',{'form':form})
+
+
 
 
 @login_required
@@ -55,49 +102,15 @@ def createrooms(request):
         form=RoomCreateForm(request.POST)
         if form.is_valid():
                 # save article to db
-                
+
                 instance = form.save(commit=False)
                 instance.roomhospital = request.user
                 instance.save()
                 return redirect("hospital:room-list")
     else:
         form=RoomCreateForm()
-        
+
     return render(request, 'hospital/roomcreate.html',{'form':form})
-
-@login_required
-def createoxyrequest(request):
-    if(request.method=="POST"):
-        form=OxygenCreateForm(request.POST)
-        if form.is_valid():
-                # save article to db
-                
-                instance = form.save(commit=False)
-                instance.oxygenhospital = request.user
-                instance.save()
-                return redirect("hospital:oxygen-list")
-    else:
-        form=OxygenCreateForm()
-        
-    return render(request, 'hospital/oxygencreate.html',{'form':form})
-
-
-@login_required
-def createbloodrequest(request):
-    if(request.method=="POST"):
-        form=BloodCreateForm(request.POST)
-        if form.is_valid():
-                # save article to db
-                
-                instance = form.save(commit=False)
-                instance.bloodhospital = request.user
-                instance.save()
-                return redirect("hospital:blood-list")
-    else:
-        form=BloodCreateForm()
-        
-    return render(request, 'hospital/bloodcreate.html',{'form':form})
-
 
 
 @login_required
@@ -106,14 +119,14 @@ def createpaitentrequest(request):
         form=PaitentCreateForm(request.POST)
         if form.is_valid():
                 # save article to db
-                
+
                 instance = form.save(commit=False)
                 instance.paitenthospital = request.user
                 instance.save()
                 return redirect("hospital:blood-list")
     else:
         form=PaitentCreateForm()
-        
+
     return render(request, 'hospital/paitentcreate.html',{'form':form})
 
 
@@ -140,7 +153,7 @@ class ItemUpdateView(UpdateView):
     form_class = DoctorStatusUpdateForm
     context_object_name = 'd'
     template_name = 'hospital/doctoredit.html'
-    
+
     @method_decorator(login_required(login_url=reverse_lazy('accounts:login')))
     @method_decorator(user_is_hospital)
     def dispatch(self, *args, **kwargs):
@@ -157,7 +170,7 @@ class RoomUpdateView(UpdateView):
     form_class = RoomUpdateForm
     context_object_name = 'r'
     template_name = 'hospital/roomedit.html'
-    
+
     @method_decorator(login_required(login_url=reverse_lazy('accounts:login')))
     @method_decorator(user_is_hospital)
     def dispatch(self, *args, **kwargs):
@@ -176,7 +189,7 @@ class OxygenUpdateView(UpdateView):
     form_class = OxygenUpdateForm
     context_object_name = 'o'
     template_name = 'hospital/oxygenedit.html'
-    
+
     @method_decorator(login_required(login_url=reverse_lazy('accounts:login')))
     @method_decorator(user_is_hospital)
     def dispatch(self, *args, **kwargs):
@@ -195,7 +208,7 @@ class BloodUpdateView(UpdateView):
     form_class = BloodUpdateForm
     context_object_name = 'b'
     template_name = 'hospital/bloodedit.html'
-    
+
     @method_decorator(login_required(login_url=reverse_lazy('accounts:login')))
     @method_decorator(user_is_hospital)
     def dispatch(self, *args, **kwargs):
@@ -213,7 +226,7 @@ class PaitentUpdateView(UpdateView):
     form_class = PaitentUpdateForm
     context_object_name = 'p'
     template_name = 'hospital/paitentedit.html'
-    
+
     @method_decorator(login_required(login_url=reverse_lazy('accounts:login')))
     @method_decorator(user_is_hospital)
     def dispatch(self, *args, **kwargs):
@@ -232,7 +245,7 @@ class AmbulanceEditView(UpdateView):
     form_class = AmbulanceCreateForm
     context_object_name = 'a'
     template_name = 'hospital/ambulanceedit.html'
-    
+
     @method_decorator(login_required(login_url=reverse_lazy('accounts:login')))
     @method_decorator(user_is_hospital)
     def dispatch(self, *args, **kwargs):

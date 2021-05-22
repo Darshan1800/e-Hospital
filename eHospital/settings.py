@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-+$9&gw()-@hy5_&idmi^l#se*qfi+yz#g$@tz9e^zp-=@zdxrl
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ehospital88.pythonanywhere.com']
 
 
 # Application definition
@@ -39,9 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Third Party Apps.
-    'django_filters',
+
     #'rest_framework',
-    'taggit',
+
     'crispy_forms',
     'phone_field',
 
@@ -68,7 +68,7 @@ ROOT_URLCONF = 'eHospital.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ["templates"],
+        'DIRS': [ os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -142,4 +142,11 @@ STATICFILES_DIRS = (
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 AUTH_USER_MODEL = "accounts.User"
+#Email server
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'dummimail042k@gmail.com'
+EMAIL_HOST_PASSWORD = 'mail042k@'

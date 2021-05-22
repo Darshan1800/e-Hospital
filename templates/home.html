@@ -4,7 +4,7 @@
 {% block content %}
 
 <style>
-    
+
 .card__text{
   color: #034e9f;
   font-family: Arial, Helvetica, sans-serif;
@@ -70,7 +70,7 @@
 }
 .card1:hover{
   box-shadow: 6px 10px 9px #888888;
-  
+
 }
 
 .card {
@@ -138,12 +138,20 @@ label{
   color: #034e9f;
   font-size: 20px;
 }
+.gif{
+
+  border-radius: 15px;
+  border-bottom: 2px solid blue;
+  border-right: 1px solid blue;
+
+
+}
 </style>
 <div class="row">
     <div class="column">
         <div class="card">
 
-            <img src="{% static 'Registration stats (1).gif' %}" alt="">
+            <img class='gif'src="{% static 'Registration stats (1).gif' %}" alt="">
         <h3 class="card__text">TOTAL HOSPITALS -  {{hospital_count}}</h3>
         <h3 class="card__text">TOTAL BLOOK BLANKS - {{bloodbank_count}}</h3>
         <h3 class="card__text">OXYGEN SUPPLIERS - {{supplier_count}}</h3>
@@ -162,8 +170,8 @@ label{
             <h3>Fill in your details</h3>
 
             <form action="{% url 'home' %}" method="POST" class="pop__form">
-             
-   
+
+
               {% csrf_token %}
                   {{form.as_p}}
                   <input type="submit" value="Submit" class="card__button">
@@ -193,8 +201,8 @@ label{
     </div>
     <div class="column">
         <div class="card">
-            
-            <img src="{% static 'Beneficiary status (1).gif' %}" alt="">
+
+            <img class='gif'src="{% static 'Beneficiary status (1).gif' %}" alt="">
         <h3 class="card__text">BEDS ALLOCATED- {{room_count}}</h3>
         <h3 class="card__text">OXYGEN CYLINDERS - {{oxygen_count}}</h3>
         <h3 class="card__text">PLASMA DONORS - {{blood_count}}</h3>

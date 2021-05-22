@@ -126,14 +126,14 @@ body {
 }
 
 main {
-  background: #f3f4f6;
+  background: #ffffff;
   grid-area: main;
   overflow-y: auto;
 }
 
 .main__container {
   padding: 20px 35px;
-  background-color: #c4c4c4;
+
 }
 
 .main__title {
