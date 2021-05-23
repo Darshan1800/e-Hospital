@@ -2,7 +2,7 @@
 <h1>Title of the Project: E-hospital</h1>
 A website to narrow down the gap between service providers and people in need during the covid-19 pandemic.
 <h2>Description:</h2>
- During the past few weeks India has witness the most diffcult times out of which we had noted few points and devoloped a possible soultion to these issues.<br>
+ During the past few weeks India has witness the most diffcult times out of which we had noted few points and devoloped a possible solution to these issues.<br>
   - Shortage of Beds.<br>
   - Unavailability of oxygen. <br>
   - Delivery of plasma/Blood.<br> 
