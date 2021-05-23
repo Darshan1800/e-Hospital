@@ -69,6 +69,8 @@ At first the homepage is common to all the users ,here it either one can registe
  We have added admin access Credentials in a admin_access.txt file feel free to check out.
 ## <h3>Future work</h3>
  Right now our website is stable for PC and Phones , we are working on making it responsive for all the devices. Fecthing the loaction via gps is also under consideration.<br> 
+
+ Link to demo :https://youtu.be/WPKsfd3jGHQ
  ## <h2>Team members <h2>
   - Darshan S Bharadwaj :- https://github.com/Darshan1800
   - Manoj M             :- https://github.com/manu042k
