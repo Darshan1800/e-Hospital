@@ -77,5 +77,9 @@ At first the homepage is common to all the users ,here it either one can registe
   - Yogeshwar K         :- https://github.com/YogeshwarK30
   - Vikram R            :- https://github.com/VikramR3
 
- 
+ <h2>Final status </h2>
+ Our team was amongst 6 teams out of 207 submissions from the total of 1878 registered teams <br>
+ <h2>Certifcate link</h2> https://github.com/Darshan1800/e-Hospital/blob/master/certificate.pdf
+  
+
  
